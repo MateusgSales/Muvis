@@ -11,19 +11,22 @@ import br.unifor.muvis.entity.Actor
 class ActorDAO(context: Context) : GenericDAO<Actor>(context, "Actors") {
 
     override fun getContentValues(obj: Actor): ContentValues {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") To change body of created functions use File | Settings | File Templates.
         val values = ContentValues()
         values.put("name",obj.name)
+        values.put("quantityOFOscars",obj.quantityOFOscars)
+        values.put("movies", obj.movies.)
 
         return values
     }
 
     override fun getModelByCursor(queryResult: Cursor): Actor {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") To change body of created functions use File | Settings | File Templates.
 
         val id = queryResult.getLong(queryResult.getColumnIndex("_id"))
         val name = queryResult.getString(queryResult.getColumnIndex("name"))
+        val quantityOFOscars = queryResult.getInt(queryResult.getColumnIndex("quantityOFOscars"))
 
-        //return Actor()
+        return Actor(id, name, quantityOFOscars,movies = setOf())
     }
 }

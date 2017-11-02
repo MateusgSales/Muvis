@@ -3,6 +3,7 @@ package br.unifor.muvis.database
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
+import br.unifor.muvis.entity.Actor
 import br.unifor.muvis.entity.Director
 import br.unifor.muvis.entity.Movie
 
@@ -29,6 +30,6 @@ class MovieDAO(context: Context) : GenericDAO<Movie>(context, "movies"){
         val year = queryResult.getInt(queryResult.getColumnIndex("year"))
         val Director = queryResult.getLong(queryResult.getColumnIndex("Director"))
 
-        //return Movie()
+        return Movie(id,name,year,Director,actors = setOf(Actor(name = name)))
     }
 }
